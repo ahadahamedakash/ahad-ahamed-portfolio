@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import GridBackground from "@/components/ui/GridBackground";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const phrases = [
   "Building products that ship",
@@ -11,6 +12,25 @@ const phrases = [
   "Thinking in systems",
   "Crafting clean interfaces",
   "Competing on Codeforces",
+];
+
+const stats = [
+  {
+    value: "10+",
+    label: "Projects shipped",
+  },
+  {
+    value: "400+",
+    label: "Problems solved",
+  },
+  {
+    value: "1.5yr",
+    label: "Industry xp",
+  },
+  {
+    value: "40%",
+    label: "Dev time saved",
+  },
 ];
 
 export default function Hero() {
@@ -124,7 +144,7 @@ export default function Hero() {
                 }}
                 onClick={() =>
                   document
-                    .getElementById("products")
+                    .getElementById("projects")
                     ?.scrollIntoView({ behavior: "smooth" })
                 }
               >
@@ -144,7 +164,12 @@ export default function Hero() {
                   fontWeight: "400",
                 }}
               >
-                Download Resume
+                <Link
+                  href="https://drive.google.com/file/d/1yvLv8FECyDCx4pyhGfwlF9PC0uxs1UL7/view?usp=sharing"
+                  target="_blank"
+                >
+                  Download Resume
+                </Link>
               </Button>
             </div>
           </div>
@@ -291,69 +316,28 @@ export default function Hero() {
         {/* STATS STRIP - Full Width Below Columns */}
         <div
           style={{
-            // marginTop: "40px",
             paddingTop: "40px",
             paddingBottom: "40px",
             // borderTop: "1px solid rgba(255,255,255,0.08)",
           }}
         >
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-            <div className="flex flex-col">
-              <span
-                className="font-display text-[var(--color-gold)]"
-                style={{ fontSize: "clamp(32px, 4vw, 42px)" }}
-              >
-                10+
-              </span>
-              <span
-                className="font-mono uppercase tracking-wider text-[var(--color-text-tertiary)]"
-                style={{ fontSize: "11px" }}
-              >
-                Projects shipped
-              </span>
-            </div>
-            <div className="flex flex-col">
-              <span
-                className="font-display text-[var(--color-gold)]"
-                style={{ fontSize: "clamp(32px, 4vw, 42px)" }}
-              >
-                160+
-              </span>
-              <span
-                className="font-mono uppercase tracking-wider text-[var(--color-text-tertiary)]"
-                style={{ fontSize: "11px" }}
-              >
-                Problems solved
-              </span>
-            </div>
-            <div className="flex flex-col">
-              <span
-                className="font-display text-[var(--color-gold)]"
-                style={{ fontSize: "clamp(32px, 4vw, 42px)" }}
-              >
-                1.5yr
-              </span>
-              <span
-                className="font-mono uppercase tracking-wider text-[var(--color-text-tertiary)]"
-                style={{ fontSize: "11px" }}
-              >
-                Industry xp
-              </span>
-            </div>
-            <div className="flex flex-col">
-              <span
-                className="font-display text-[var(--color-gold)]"
-                style={{ fontSize: "clamp(32px, 4vw, 42px)" }}
-              >
-                40%
-              </span>
-              <span
-                className="font-mono uppercase tracking-wider text-[var(--color-text-tertiary)]"
-                style={{ fontSize: "11px" }}
-              >
-                Dev time saved
-              </span>
-            </div>
+            {stats.map((stat, index) => (
+              <div key={index} className="flex flex-col">
+                <span
+                  className="font-display text-[var(--color-gold)]"
+                  style={{ fontSize: "clamp(32px, 4vw, 42px)" }}
+                >
+                  {stat.value}
+                </span>
+                <span
+                  className="font-mono uppercase tracking-wider text-[var(--color-text-tertiary)]"
+                  style={{ fontSize: "11px" }}
+                >
+                  {stat.label}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </div>

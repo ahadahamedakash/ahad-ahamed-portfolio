@@ -43,19 +43,19 @@ export default function Projects() {
             variants={itemVariants}
             className="font-mono text-xs text-[var(--color-gold)] mb-3"
           >
-            // products.filter(p =&gt; p.shipped === true)
+            // projects.filter(p =&gt; p.featured === true)
           </motion.p>
           <motion.h2
             variants={itemVariants}
             className="font-display text-5xl mb-3"
           >
-            Products
+            Projects
           </motion.h2>
           <motion.p
             variants={itemVariants}
             className="font-sans text-[var(--color-text-secondary)]"
           >
-            Things I&apos;ve shipped.
+            Things I&apos;ve build.
           </motion.p>
         </motion.div>
 
