@@ -12,10 +12,10 @@ export default function HomePage() {
     <main id="main-content" tabIndex={-1}>
       <Hero />
       <TheArc />
-      <ProblemSolver />
       <Experience />
       <Skills />
       <Projects />
+      <ProblemSolver />
       <TechMarquee />
       <Contact />
     </main>

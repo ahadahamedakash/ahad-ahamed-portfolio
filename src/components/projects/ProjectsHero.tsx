@@ -75,7 +75,7 @@ export default function ProjectsHero({ projectCount }: ProjectsHeroProps) {
             marginBottom: "14px",
           }}
         >
-          // all_products.length === {projectCount}
+          // all_projects.length === {projectCount}
         </motion.p>
 
         {/* Page Title */}
@@ -110,7 +110,7 @@ export default function ProjectsHero({ projectCount }: ProjectsHeroProps) {
             marginBottom: "40px",
           }}
         >
-          From stock management platforms to AI health assistants — each project
+          From stock management platforms to AI health assistants - each project
           started with a real problem worth solving. Every line of code has a
           reason.
         </motion.p>

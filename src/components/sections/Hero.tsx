@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion } from "motion/react";
-import GridBackground from "@/components/ui/GridBackground";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Image from "next/image";
+import { motion } from "motion/react";
+import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
+import GridBackground from "@/components/ui/GridBackground";
 
 const phrases = [
   "Building products that ship",
@@ -33,12 +34,143 @@ const stats = [
   },
 ];
 
+// Profile Card Component with glowing circular border animation
+function ProfileCard() {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.9, y: 30 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="relative flex items-center justify-center"
+      style={{
+        width: "450px",
+        height: "450px",
+      }}
+    >
+      {/* Glowing Orb Behind */}
+      <motion.div
+        className="absolute rounded-full blur-3xl"
+        style={{
+          width: "120%",
+          height: "120%",
+          left: "-10%",
+          top: "-10%",
+          background:
+            "radial-gradient(circle, var(--color-gold) 0%, transparent 70%)",
+          opacity: 0.3,
+        }}
+        animate={{
+          opacity: isHovered ? 0.5 : 0.3,
+          scale: isHovered ? 1.1 : 1,
+        }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      />
+
+      {/* Rotating Glow Ring 1 */}
+      <motion.div
+        className="absolute rounded-full"
+        style={{
+          width: "500px",
+          height: "470px",
+          left: "-10px",
+          top: "-10px",
+          background:
+            "conic-gradient(from 0deg, var(--color-gold), var(--color-copper), var(--color-gold))",
+          opacity: 0.12,
+        }}
+        animate={{ rotate: 360 }}
+        transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+      />
+
+      {/* Rotating Glow Ring 2 (Counter-rotating) */}
+      <motion.div
+        className="absolute rounded-full blur-md"
+        style={{
+          width: "480px",
+          height: "480px",
+          left: "-10px",
+          top: "-10px",
+          background:
+            "conic-gradient(from 180deg, var(--color-copper), var(--color-gold), var(--color-copper))",
+          opacity: 0.08,
+        }}
+        animate={{ rotate: -360 }}
+        transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+      />
+
+      {/* Rotating Glow Ring 3 */}
+      <motion.div
+        className="absolute rounded-full blur-lg"
+        style={{
+          width: "300px",
+          height: "380px",
+          left: "-30px",
+          top: "-30px",
+          background:
+            "conic-gradient(from 90deg, var(--color-gold), var(--color-amber-deep), var(--color-gold))",
+          opacity: 0.05,
+        }}
+        animate={{ rotate: 360 }}
+        transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+      />
+
+      {/* Main Image with Border Radius */}
+      <motion.div
+        className="relative overflow-hidden rounded-3xl"
+        style={{
+          width: "100%",
+          height: "100%",
+          border: "2px solid rgba(181, 160, 106, 0.3)",
+          boxShadow:
+            "0 0 60px rgba(181, 160, 106, 0.2), inset 0 0 60px rgba(181, 160, 106, 0.05)",
+        }}
+        animate={isHovered ? { scale: 1.02 } : { scale: 1 }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
+      >
+        {/* Animated Inner Glow Overlay */}
+        <motion.div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(circle at 30% 30%, rgba(181, 160, 106, 0.08) 0%, transparent 60%)",
+          }}
+          animate={
+            isHovered
+              ? {
+                  background: [
+                    "radial-gradient(circle at 30% 30%, rgba(181, 160, 106, 0.08) 0%, transparent 60%)",
+                    "radial-gradient(circle at 70% 70%, rgba(200, 132, 90, 0.12) 0%, transparent 60%)",
+                    "radial-gradient(circle at 30% 30%, rgba(181, 160, 106, 0.08) 0%, transparent 60%)",
+                  ],
+                }
+              : {}
+          }
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+        />
+
+        {/* Profile Image */}
+        <Image
+          src="/images/ahad/ahad.webp"
+          alt="Ahad Ahamed Akash"
+          fill
+          className="object-cover"
+          priority
+          sizes="(max-width: 640px) 400px, 400px"
+        />
+      </motion.div>
+    </motion.div>
+  );
+}
+
 export default function Hero() {
   const [currentPhrase, setCurrentPhrase] = useState(0);
   const [displayText, setDisplayText] = useState(phrases[0]);
   const [isDeleting, setIsDeleting] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
-  const [showReadyLine, setShowReadyLine] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
@@ -70,14 +202,6 @@ export default function Hero() {
 
     return () => clearTimeout(timeout);
   }, [displayText, isDeleting, currentPhrase, isMounted]);
-
-  // Trigger the "ready" line animation after terminal finishes
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowReadyLine(true);
-    }, 3500);
-    return () => clearTimeout(timer);
-  }, []);
 
   return (
     <section className="relative min-h-[70dvh] overflow-hidden px-6 md:px-10 py-16 md:py-24">
@@ -121,10 +245,10 @@ export default function Hero() {
               className="font-sans font-light leading-relaxed text-[var(--color-text-secondary)] mb-6"
               style={{ fontSize: "16px", lineHeight: "1.8", maxWidth: "460px" }}
             >
-              From medical student to full-stack engineer — I build real
+              From medical student to Full Stack Engineer - I build real
               products and sharpen my problem-solving through competitive
               programming. 1.5+ years shipping at scale, 10+ projects delivered,
-              160+ algorithmic problems solved.
+              400+ algorithmic problems solved.
             </p>
 
             {/* CTAs */}
@@ -150,6 +274,7 @@ export default function Hero() {
               >
                 View Projects →
               </Button>
+
               <Button
                 variant="outline"
                 className="rounded-md text-sm bg-transparent"
@@ -168,148 +293,15 @@ export default function Hero() {
                   href="https://drive.google.com/file/d/1yvLv8FECyDCx4pyhGfwlF9PC0uxs1UL7/view?usp=sharing"
                   target="_blank"
                 >
-                  Download Resume
+                  Resume
                 </Link>
               </Button>
             </div>
           </div>
 
           {/* RIGHT COLUMN - 48% */}
-          <div className="lg:w-[48%]" style={{ paddingTop: "8px" }}>
-            <motion.div
-              initial={{ x: 40, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
-              className="w-full max-w-[420px]"
-              style={{ rotate: "rotate(-1deg)" }}
-            >
-              {/* Terminal Card */}
-              <div
-                className="bg-[#1A1A18] border rounded-xl p-5 w-full relative overflow-hidden"
-                style={{
-                  borderColor: "rgba(181,160,106,0.15)",
-                  boxShadow: "0 0 60px rgba(181,160,106,0.06)",
-                  minHeight: "300px",
-                }}
-              >
-                {/* Scanline Effect */}
-                <div
-                  className="absolute inset-0 pointer-events-none rounded-xl"
-                  style={{
-                    background:
-                      "repeating-linear-gradient(0deg, rgba(255,255,255,0.015) 0px, transparent 2px, transparent 4px)",
-                  }}
-                />
-
-                {/* Terminal Header */}
-                <div className="flex items-center gap-2 mb-4 relative z-10">
-                  <div className="w-2 h-2 rounded-full bg-[#FF5F56]" />
-                  <div className="w-2 h-2 rounded-full bg-[#FFBD2E]" />
-                  <div className="w-2 h-2 rounded-full bg-[#27C93F]" />
-                  <span className="font-mono text-xs text-[var(--color-gold)] ml-2">
-                    ahad@portfolio:~$
-                  </span>
-                </div>
-
-                {/* Terminal Content */}
-                <div
-                  className="font-mono relative z-10"
-                  style={{ fontSize: "13px" }}
-                >
-                  <motion.div
-                    initial={{ opacity: 0, y: 4 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4 }}
-                    className="text-[var(--color-text-tertiary)] mb-1"
-                  >
-                    $ whoami
-                  </motion.div>
-                  <motion.div
-                    initial={{ opacity: 0, y: 4 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.7 }}
-                    className="text-[var(--color-gold)] mb-3"
-                  >
-                    → ahad_ahamed_akash
-                  </motion.div>
-
-                  <motion.div
-                    initial={{ opacity: 0, y: 4 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.0 }}
-                    className="text-[var(--color-text-tertiary)] mb-1"
-                  >
-                    $ skills --list
-                  </motion.div>
-                  <motion.div
-                    initial={{ opacity: 0, y: 4 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.3 }}
-                    className="text-[var(--color-copper)] mb-3"
-                  >
-                    → react, next.js, node.js, mongodb
-                  </motion.div>
-
-                  <motion.div
-                    initial={{ opacity: 0, y: 4 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.6 }}
-                    className="text-[var(--color-text-tertiary)] mb-1"
-                  >
-                    $ solve --platform codeforces
-                  </motion.div>
-                  <motion.div
-                    initial={{ opacity: 0, y: 4 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.9 }}
-                    className="text-[var(--color-sage)] mb-3"
-                  >
-                    → 110+ problems solved ✓
-                  </motion.div>
-
-                  <motion.div
-                    initial={{ opacity: 0, y: 4 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 2.2 }}
-                    className="text-[var(--color-text-tertiary)] mb-1"
-                  >
-                    $ status
-                  </motion.div>
-                  <motion.div
-                    initial={{ opacity: 0, y: 4 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 2.5 }}
-                    className="text-[var(--color-sage)] mb-2"
-                  >
-                    → open_to_work: true
-                  </motion.div>
-
-                  {/* Ready Line */}
-                  {showReadyLine && (
-                    <>
-                      <motion.div
-                        initial={{ opacity: 0, y: 4 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2 }}
-                        className="text-[var(--color-gold)] mb-1"
-                        style={{ color: "#B5A06A" }}
-                      >
-                        → ready_to_build --your-next-product
-                      </motion.div>
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.4 }}
-                        className="text-[var(--color-gold)] animate-pulse"
-                        style={{ color: "#B5A06A" }}
-                      >
-                        ▊
-                      </motion.div>
-                    </>
-                  )}
-                </div>
-              </div>
-            </motion.div>
+          <div className="lg:w-[48%] flex items-center justify-center lg:justify-end">
+            <ProfileCard />
           </div>
         </div>
 
