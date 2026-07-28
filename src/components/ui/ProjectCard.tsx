@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import Image from "next/image";
 import { ExternalLink } from "lucide-react";
+import Link from "next/link";
 
 /**
  * TypeScript interfaces for type safety and reusability
@@ -165,6 +166,7 @@ function ActionButton({
  * @returns JSX element representing the project card
  */
 export default function ProjectCard({
+  slug,
   title,
   description,
   image,
@@ -181,15 +183,16 @@ export default function ProjectCard({
 
   // Responsive tech tag limits
   const maxTags = {
-    small: 3,   // < 480px
-    mobile: 3,  // < 768px
-    tablet: 4,  // < 1024px
+    small: 3, // < 480px
+    mobile: 3, // < 768px
+    tablet: 4, // < 1024px
     desktop: 5, // >= 1024px
   };
 
   // Calculate which tags to show (client-side only for accurate screen size)
   const getDisplayedTech = () => {
-    if (typeof window === "undefined") return uniqueTechnologies.slice(0, maxTags.desktop);
+    if (typeof window === "undefined")
+      return uniqueTechnologies.slice(0, maxTags.desktop);
 
     const width = window.innerWidth;
     let limit = maxTags.desktop;
@@ -227,15 +230,17 @@ export default function ProjectCard({
           whileHover={{ scale: 1.03 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <Image
-            src={image}
-            alt={title}
-            fill
-            className="object-cover"
-            style={{ objectPosition: "top" }}
-            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
-            priority={priority || index < 2}
-          />
+          <Link href={`projects/${slug}`}>
+            <Image
+              src={image}
+              alt={title}
+              fill
+              className="object-cover"
+              style={{ objectPosition: "top" }}
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
+              priority={priority || index < 2}
+            />
+          </Link>
         </motion.div>
 
         {/* Featured Badge */}
@@ -269,7 +274,14 @@ export default function ProjectCard({
         }}
       >
         {/* Desktop/Tablet Layout */}
-        <div className="hidden md:grid" style={{ gridTemplateColumns: "1fr auto", gap: "24px", alignItems: "start" }}>
+        <div
+          className="hidden md:grid"
+          style={{
+            gridTemplateColumns: "1fr auto",
+            gap: "24px",
+            alignItems: "start",
+          }}
+        >
           {/* Left: Content */}
           <div>
             {/* Project Number */}
@@ -320,26 +332,43 @@ export default function ProjectCard({
               {displayedTech.map((tech) => (
                 <TechTag key={tech}>{tech}</TechTag>
               ))}
-              {remainingCount > 0 && <TechTag variant="more">+{remainingCount}</TechTag>}
+              {remainingCount > 0 && (
+                <TechTag variant="more">+{remainingCount}</TechTag>
+              )}
             </div>
           </div>
 
           {/* Right: Action Buttons */}
-          <div className="flex flex-col" style={{ gap: "10px", alignItems: "flex-end" }}>
+          <div
+            className="flex flex-col"
+            style={{ gap: "10px", alignItems: "flex-end" }}
+          >
             {liveUrl && (
-              <ActionButton href={liveUrl} variant="primary" icon={<ExternalLink size={14} />}>
+              <ActionButton
+                href={liveUrl}
+                variant="primary"
+                icon={<ExternalLink size={14} />}
+              >
                 Live Demo
               </ActionButton>
             )}
 
             {githubUrl && (
-              <ActionButton href={githubUrl} variant="secondary" icon={<GithubIcon />}>
+              <ActionButton
+                href={githubUrl}
+                variant="secondary"
+                icon={<GithubIcon />}
+              >
                 {githubBackendUrl ? "Frontend" : "Source Code"}
               </ActionButton>
             )}
 
             {githubBackendUrl && (
-              <ActionButton href={githubBackendUrl} variant="secondary" icon={<GithubIcon />}>
+              <ActionButton
+                href={githubBackendUrl}
+                variant="secondary"
+                icon={<GithubIcon />}
+              >
                 Backend
               </ActionButton>
             )}
@@ -390,30 +419,47 @@ export default function ProjectCard({
             </p>
 
             {/* Tech Tags */}
-            <div className="flex flex-wrap" style={{ gap: "6px", marginBottom: "16px" }}>
+            <div
+              className="flex flex-wrap"
+              style={{ gap: "6px", marginBottom: "16px" }}
+            >
               {displayedTech.map((tech) => (
                 <TechTag key={tech}>{tech}</TechTag>
               ))}
-              {remainingCount > 0 && <TechTag variant="more">+{remainingCount}</TechTag>}
+              {remainingCount > 0 && (
+                <TechTag variant="more">+{remainingCount}</TechTag>
+              )}
             </div>
           </div>
 
           {/* Action Buttons */}
           <div className="flex flex-wrap" style={{ gap: "8px" }}>
             {liveUrl && (
-              <ActionButton href={liveUrl} variant="primary" icon={<ExternalLink size={14} />}>
+              <ActionButton
+                href={liveUrl}
+                variant="primary"
+                icon={<ExternalLink size={14} />}
+              >
                 Live Demo
               </ActionButton>
             )}
 
             {githubUrl && (
-              <ActionButton href={githubUrl} variant="secondary" icon={<GithubIcon />}>
+              <ActionButton
+                href={githubUrl}
+                variant="secondary"
+                icon={<GithubIcon />}
+              >
                 {githubBackendUrl ? "Frontend" : "Source"}
               </ActionButton>
             )}
 
             {githubBackendUrl && (
-              <ActionButton href={githubBackendUrl} variant="secondary" icon={<GithubIcon />}>
+              <ActionButton
+                href={githubBackendUrl}
+                variant="secondary"
+                icon={<GithubIcon />}
+              >
                 Backend
               </ActionButton>
             )}

@@ -20,6 +20,15 @@ export interface Experience {
 export interface Skills {
   name: string;
   logo: string;
+  category:
+    | "Frontend"
+    | "Backend"
+    | "UI"
+    | "Tools"
+    | "Testing"
+    | "Auth"
+    | "State"
+    | "Problem Solving";
 }
 
 export interface Project {
@@ -51,7 +60,7 @@ export interface ContactInfo {
 // Personal Information
 export const personalInfo = {
   name: "Ahad Ahamed Akash",
-  title: "Frontend Developer | React & Next.js",
+  title: "Full Stack Developer | React & Next.js",
   subtitle:
     "Love to building clean, fast & thoughtful web apps with modern web technologies",
   bio: "I'm a frontend-focused developer with a knack for crafting responsive and smooth user experiences using React, Next.js, and Tailwind CSS. Over the past 1.5+ years, I’ve worked on a variety of projects — from full-stack MERN applications to modern dashboards with ShadCN and MUI — always putting performance, accessibility, and clean design at the heart of my work. I enjoy turning ideas into real, usable interfaces and constantly push myself to learn and grow with every project.",
@@ -131,106 +140,225 @@ export const experience: Experience[] = [
 
 // Skills Data
 export const skills: Skills[] = [
+  // Frontend Core
   {
     name: "React",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+    category: "Frontend",
   },
   {
     name: "Next.js",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+    category: "Frontend",
   },
   {
     name: "TypeScript",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+    category: "Frontend",
   },
   {
     name: "JavaScript",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
-  },
-  {
-    name: "Tailwind CSS",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg",
-  },
-  {
-    name: "Node.js",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
-  },
-  {
-    name: "Express.js",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
-  },
-  {
-    name: "MongoDB",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+    category: "Frontend",
   },
   {
     name: "HTML5",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+    category: "Frontend",
   },
   {
     name: "CSS3",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+    category: "Frontend",
+  },
+  {
+    name: "ES6+",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+    category: "Frontend",
+  },
+
+  // State & Data
+  {
+    name: "Redux",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg",
+    category: "State",
+  },
+  {
+    name: "Redux Toolkit",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg",
+    category: "State",
+  },
+  {
+    name: "TanStack Query",
+    logo: "https://cdn.simpleicons.org/reactquery",
+    category: "State",
+  },
+  {
+    name: "React Context",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+    category: "State",
+  },
+  {
+    name: "React Hook Form",
+    logo: "https://cdn.simpleicons.org/reacthookform",
+    category: "State",
+  },
+
+  // UI & Styling
+  {
+    name: "Tailwind CSS",
+    logo: "https://cdn.simpleicons.org/tailwindcss/06B6D4",
+    category: "UI",
+  },
+  {
+    name: "shadcn/ui",
+    logo: "https://cdn.simpleicons.org/shadcnui",
+    category: "UI",
+  },
+  {
+    name: "Material UI",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/materialui/materialui-original.svg",
+    category: "UI",
+  },
+  {
+    name: "Framer Motion",
+    logo: "https://cdn.simpleicons.org/framer",
+    category: "UI",
+  },
+  {
+    name: "DaisyUI",
+    logo: "https://cdn.simpleicons.org/daisyui",
+    category: "UI",
   },
   {
     name: "Bootstrap",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg",
+    category: "UI",
+  },
+
+  // Backend
+  {
+    name: "Node.js",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+    category: "Backend",
   },
   {
-    name: "Redux",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg",
+    name: "Express.js",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
+    category: "Backend",
   },
+  {
+    name: "MongoDB",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+    category: "Backend",
+  },
+  {
+    name: "Mongoose",
+    logo: "https://cdn.simpleicons.org/mongoose",
+    category: "Backend",
+  },
+  {
+    name: "REST APIs",
+    logo: "https://cdn.simpleicons.org/openapiinitiative",
+    category: "Backend",
+  },
+
+  // Authentication & Services
+  {
+    name: "JWT",
+    logo: "https://cdn.simpleicons.org/jsonwebtokens",
+    category: "Auth",
+  },
+  {
+    name: "Firebase",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg",
+    category: "Auth",
+  },
+  {
+    name: "Clerk",
+    logo: "https://cdn.simpleicons.org/clerk",
+    category: "Auth",
+  },
+  {
+    name: "NextAuth.js",
+    logo: "https://authjs.dev/img/logo-sm.png",
+    category: "Auth",
+  },
+  {
+    name: "Axios",
+    logo: "https://cdn.simpleicons.org/axios",
+    category: "Auth",
+  },
+
+  // Tools & Deployment
   {
     name: "Git",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+    category: "Tools",
   },
   {
     name: "GitHub",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+    category: "Tools",
   },
   {
-    name: "Material-UI",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/materialui/materialui-original.svg",
+    name: "Vercel",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg",
+    category: "Tools",
   },
   {
-    name: "Mongoose",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongoose/mongoose-original.svg",
+    name: "Netlify",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/netlify/netlify-original.svg",
+    category: "Tools",
+  },
+  {
+    name: "Postman",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg",
+    category: "Tools",
+  },
+
+  // Testing
+  {
+    name: "Jest",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg",
+    category: "Testing",
+  },
+  {
+    name: "Vitest",
+    logo: "https://cdn.simpleicons.org/vitest",
+    category: "Testing",
+  },
+  {
+    name: "React Testing Library",
+    logo: "https://cdn.simpleicons.org/testinglibrary",
+    category: "Testing",
+  },
+  {
+    name: "ESLint",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/eslint/eslint-original.svg",
+    category: "Testing",
+  },
+
+  // Problem Solving
+  {
+    name: "Codeforces",
+    logo: "https://cdn.simpleicons.org/codeforces",
+    category: "Problem Solving",
+  },
+  {
+    name: "LeetCode",
+    logo: "https://cdn.simpleicons.org/leetcode",
+    category: "Problem Solving",
+  },
+  {
+    name: "CodeChef",
+    logo: "https://cdn.simpleicons.org/codechef",
+    category: "Problem Solving",
   },
 ];
 
 // Projects Data
 export const projects: Project[] = [
-  {
-    slug: "tech-store",
-    title: "TechStore - E-commerce",
-    shortDescription:
-      "A modern, responsive e-commerce web application built with React 19, featuring a comprehensive public-facing site with authentication, product catalog, shopping cart, and more.",
-    fullDescription:
-      "A modern, responsive e-commerce web application built with React 19, featuring a comprehensive public-facing site with authentication, product catalog, shopping cart, and more.",
-    image: "/images/project/tech-store/tech-store-home-page.png",
-    images: [
-      "/images/project/tech-store/tech-store-home-page.png",
-      "/images/project/tech-store/product-page.png",
-      "/images/project/tech-store/category-dashboard-page.png",
-    ],
-    technologies: [
-      "React 19",
-      "ShadCN",
-      "Tailwind CSS",
-      "Redux Toolkit",
-      "React Hook Form",
-      "YUP",
-      "Node.js",
-      "Express.js",
-      "Mongoose",
-      "TypeScript",
-      "JWT",
-    ],
-    githubUrl: "https://github.com/ahadahamedakash/TechStore",
-    githubBackend: "https://github.com/ahadahamedakash/TechStore-Server",
-    liveUrl: "https://tech-store-mu-ashen.vercel.app/",
-    featured: true,
-    completedAt: "2025-01-15",
-  },
   {
     slug: "stock-management-app",
     title: "Alishan - Stock Management App",
@@ -266,6 +394,38 @@ export const projects: Project[] = [
     liveUrl: "https://alishan-stock-management.vercel.app",
     featured: true,
     completedAt: "2023-11-20",
+  },
+  {
+    slug: "tech-store",
+    title: "TechStore - E-commerce",
+    shortDescription:
+      "A modern, responsive e-commerce web application built with React 19, featuring a comprehensive public-facing site with authentication, product catalog, shopping cart, and more.",
+    fullDescription:
+      "A modern, responsive e-commerce web application built with React 19, featuring a comprehensive public-facing site with authentication, product catalog, shopping cart, and more.",
+    image: "/images/project/tech-store/tech-store-home-page.png",
+    images: [
+      "/images/project/tech-store/tech-store-home-page.png",
+      "/images/project/tech-store/product-page.png",
+      "/images/project/tech-store/category-dashboard-page.png",
+    ],
+    technologies: [
+      "React 19",
+      "ShadCN",
+      "Tailwind CSS",
+      "Redux Toolkit",
+      "React Hook Form",
+      "YUP",
+      "Node.js",
+      "Express.js",
+      "Mongoose",
+      "TypeScript",
+      "JWT",
+    ],
+    githubUrl: "https://github.com/ahadahamedakash/TechStore",
+    githubBackend: "https://github.com/ahadahamedakash/TechStore-Server",
+    liveUrl: "https://tech-store-mu-ashen.vercel.app/",
+    featured: true,
+    completedAt: "2025-01-15",
   },
   {
     slug: "tech-trove",
@@ -317,7 +477,7 @@ export const projects: Project[] = [
       "React Scroll Parallax",
     ],
     githubUrl: "https://github.com/ahadahamedakash/skinofairy",
-    liveUrl: "https://www.skinofairy.com",
+    liveUrl: "https://skinofairy.vercel.app",
     featured: true,
     completedAt: "2023-07-25",
   },
@@ -358,7 +518,7 @@ export const contactInfo: ContactInfo = {
   socialLinks: {
     github: "https://github.com/ahadahamedakash",
     linkedin: "https://linkedin.com/in/ahadahamed",
-    twitter: "https://twitter.com/ah1033ad",
+    twitter: "https://twitter.com/ahadahamedakash",
   },
 };
 

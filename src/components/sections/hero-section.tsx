@@ -1,170 +1,345 @@
 "use client";
 
-import { useRef } from "react";
+import Link from "next/link";
 import { motion } from "motion/react";
-import { ArrowDown, Download, Code, Building, Mail } from "lucide-react";
-
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
+import GridBackground from "@/components/ui/GridBackground";
 
-import { contactInfo, personalInfo } from "@/lib/data";
-import { TYPING_ANIMATION } from "@/lib/constants";
-import { useScroll } from "@/hooks/use-scroll";
-import { useTypingAnimation } from "@/hooks/use-animation";
+const phrases = [
+  "Building products that ship",
+  "Solving hard algorithms",
+  "Thinking in systems",
+  "Crafting clean interfaces",
+  "Competing on Codeforces",
+];
 
-export function HeroSection() {
-  // Use custom scroll hook instead of direct DOM manipulation
-  const { scrollToElement } = useScroll();
+const stats = [
+  {
+    value: "10+",
+    label: "Projects shipped",
+  },
+  {
+    value: "400+",
+    label: "Problems solved",
+  },
+  {
+    value: "1.5yr",
+    label: "Industry xp",
+  },
+  {
+    value: "40%",
+    label: "Dev time saved",
+  },
+];
 
-  const nameTitle = "Hi I'm Ahad Ahamed Akash";
+export default function HeroSection() {
+  const [currentPhrase, setCurrentPhrase] = useState(0);
+  const [displayText, setDisplayText] = useState(phrases[0]);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+  const [showReadyLine, setShowReadyLine] = useState(false);
 
-  const nameRef = useRef<HTMLSpanElement>(null);
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
-  // Use custom typing animation hook with constants
-  const { typedText, isComplete: doneTyping } = useTypingAnimation(
-    nameTitle,
-    TYPING_ANIMATION.CHAR_DURATION,
-    undefined
-  );
+  useEffect(() => {
+    if (!isMounted) return;
 
-  // Update ref with typed text
-  if (nameRef.current && nameRef.current.textContent !== typedText) {
-    nameRef.current.textContent = typedText;
-  }
+    const phrase = phrases[currentPhrase];
+    const timeout = setTimeout(
+      () => {
+        if (!isDeleting) {
+          if (displayText.length < phrase.length) {
+            setDisplayText(phrase.slice(0, displayText.length + 1));
+          } else {
+            setTimeout(() => setIsDeleting(true), 2000);
+          }
+        } else {
+          if (displayText.length > 0) {
+            setDisplayText(phrase.slice(0, displayText.length - 1));
+          } else {
+            setIsDeleting(false);
+            setCurrentPhrase((currentPhrase + 1) % phrases.length);
+          }
+        }
+      },
+      isDeleting ? 50 : 100,
+    );
+
+    return () => clearTimeout(timeout);
+  }, [displayText, isDeleting, currentPhrase, isMounted]);
+
+  // Trigger the "ready" line animation after terminal finishes
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowReadyLine(true);
+    }, 3500);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-foreground dark:bg-background">
-      {/* Background Animation */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-accent/20 rounded-full blur-3xl animate-float" />
-        <div
-          className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-accent/90 rounded-full blur-3xl animate-float"
-          style={{ animationDelay: "1s" }}
-        />
-      </div>
+    <section className="relative min-h-[70dvh] overflow-hidden px-6 md:px-10 py-16 md:py-24">
+      <GridBackground />
 
-      <div className="max-w-7xl mx-auto py-24 px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="mb-6 sm:mb-8"
-          >
-            <motion.h1
-              initial={{ opacity: 0, y: 0 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.9, duration: 0.8 }}
-              className="text-3xl xs:text-4xl sm:text-5xl lg:text-7xl font-bold mb-4 sm:mb-6 text-white"
+      {/* Container - same max-width as other sections */}
+      <div className="relative z-10 max-w-7xl mx-auto px-10">
+        {/* Two Column Row */}
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 lg:items-start">
+          {/* LEFT COLUMN - 52% */}
+          <div className="lg:w-[52%] flex flex-col">
+            {/* Name */}
+            <h1
+              className="font-display font-bold leading-tight mb-6"
+              style={{ fontSize: "clamp(48px, 8vw, 72px)" }}
             >
-              <span
-                ref={nameRef}
-                className="font-heading gradient-text bg-clip-text text-transparent"
-              >
-                {nameTitle}
+              Ahad
+              <br />
+              <span className="italic text-[var(--color-gold)]">
+                Ahamed
+              </span>{" "}
+              Akash
+            </h1>
+
+            {/* Thin Gold Rule */}
+            <div className="w-[60px] h-px bg-[var(--color-gold)] mb-6" />
+
+            {/* Typewriter */}
+            <div className="flex items-center gap-3 mb-6">
+              <span className="font-mono text-sm md:text-base text-[var(--color-text-tertiary)]">
+                &gt;_
               </span>
-            </motion.h1>
-
-            <motion.h2
-              className="text-lg xs:text-xl sm:text-2xl lg:text-3xl font-medium mb-3 sm:mb-4 text-white"
-              initial={{ opacity: 0, y: 20 }}
-              animate={
-                doneTyping ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
-              }
-              transition={{ delay: doneTyping ? 0.4 : 0, duration: 0.8 }}
-            >
-              {personalInfo.title}
-            </motion.h2>
-
-            <motion.p
-              className="text-muted dark:text-muted-foreground text-sm xs:text-base sm:text-lg md:text-xl text-light/80 mb-6 sm:mb-8 max-w-3xl mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              animate={doneTyping ? { opacity: 1, y: 0 } : { opacity: 0, y: 0 }}
-              transition={{ delay: doneTyping ? 0.6 : 0, duration: 0.8 }}
-            >
-              {personalInfo.subtitle}
-            </motion.p>
-
-            <motion.p
-              className="text-muted dark:text-muted-foreground text-xs xs:text-sm sm:text-base md:text-lg text-light/80 mb-6 sm:mb-8 max-w-3xl mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              animate={doneTyping ? { opacity: 1, y: 0 } : { opacity: 0, y: 0 }}
-              transition={{ delay: doneTyping ? 0.6 : 0, duration: 0.8 }}
-            >
-              {personalInfo.bio}
-            </motion.p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={doneTyping ? { opacity: 1, y: 0 } : { opacity: 0, y: 0 }}
-            transition={{ delay: doneTyping ? 0.9 : 0, duration: 0.8 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-8 sm:mb-12"
-          >
-            <Button
-              size="lg"
-              variant="outline"
-              className="bg-accent-light hover:bg-accent text-white font-semibold px-6 sm:px-8 py-3 rounded-full transition-all duration-300 hover:scale-105"
-              asChild
-            >
-              <a href={personalInfo.resumeUrl} download>
-                <Download className="w-5 h-5 mr-2" />
-                <span className="text-sm sm:text-base">Download Resume</span>
-              </a>
-            </Button>
-
-            <div className="flex items-center space-x-4">
-              <motion.a
-                href={contactInfo.socialLinks.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="min-h-[44px] min-w-[44px] flex items-center justify-center p-3 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-300"
-                aria-label="GitHub Profile"
-              >
-                <Code className="w-6 h-6 text-white" />
-              </motion.a>
-
-              <motion.a
-                href={contactInfo.socialLinks.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="min-h-[44px] min-w-[44px] flex items-center justify-center p-3 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-300"
-                aria-label="LinkedIn Profile"
-              >
-                <Building className="w-6 h-6 text-white" />
-              </motion.a>
-
-              <motion.a
-                href={`mailto:${contactInfo.email}`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="min-h-[44px] min-w-[44px] flex items-center justify-center p-3 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-300"
-                aria-label="Send Email"
-              >
-                <Mail className="w-6 h-6 text-white" />
-              </motion.a>
+              <span className="font-mono text-sm md:text-base text-[var(--color-copper)]">
+                {displayText}
+                <span className="animate-pulse">|</span>
+              </span>
             </div>
-          </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.2, duration: 0.8 }}
-            className="absolute bottom-16 sm:bottom-20 left-1/2 transform -translate-x-1/2"
-          >
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => scrollToElement("experience")}
-              className="min-h-[44px] min-w-[44px] animate-bounce text-white hover:bg-white/10 rounded-full p-2"
-              aria-label="Scroll to experience section"
+            {/* Bio */}
+            <p
+              className="font-sans font-light leading-relaxed text-[var(--color-text-secondary)] mb-6"
+              style={{ fontSize: "16px", lineHeight: "1.8", maxWidth: "460px" }}
             >
-              <ArrowDown className="w-6 h-6" />
-            </Button>
-          </motion.div>
+              From medical student to Full Stack Engineer - I build real
+              products and sharpen my problem-solving through competitive
+              programming. 1.5+ years shipping at scale, 10+ projects delivered,
+              400+ algorithmic problems solved.
+            </p>
+
+            {/* CTAs */}
+            <div className="flex flex-wrap gap-3" style={{ gap: "12px" }}>
+              <Button
+                variant="default"
+                className="rounded-md text-sm"
+                style={{
+                  backgroundColor: "#B5A06A",
+                  color: "#111110",
+                  border: "none",
+                  paddingTop: "12px",
+                  paddingBottom: "12px",
+                  paddingLeft: "28px",
+                  paddingRight: "28px",
+                  fontWeight: "500",
+                }}
+                onClick={() =>
+                  document
+                    .getElementById("projects")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
+              >
+                View Projects →
+              </Button>
+
+              <Button
+                variant="outline"
+                className="rounded-md text-sm bg-transparent"
+                style={{
+                  backgroundColor: "transparent",
+                  color: "rgba(242,237,228,0.6)",
+                  border: "1px solid rgba(181,160,106,0.28)",
+                  paddingTop: "12px",
+                  paddingBottom: "12px",
+                  paddingLeft: "24px",
+                  paddingRight: "24px",
+                  fontWeight: "400",
+                }}
+              >
+                <Link
+                  href="https://drive.google.com/file/d/1yvLv8FECyDCx4pyhGfwlF9PC0uxs1UL7/view?usp=sharing"
+                  target="_blank"
+                >
+                  Resume
+                </Link>
+              </Button>
+            </div>
+          </div>
+
+          {/* RIGHT COLUMN - 48% */}
+          <div className="lg:w-[48%]" style={{ paddingTop: "8px" }}>
+            <motion.div
+              initial={{ x: 40, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
+              className="w-full max-w-[420px]"
+              style={{ rotate: "rotate(-1deg)" }}
+            >
+              {/* Terminal Card */}
+              <div
+                className="bg-[#1A1A18] border rounded-xl p-5 w-full relative overflow-hidden"
+                style={{
+                  borderColor: "rgba(181,160,106,0.15)",
+                  boxShadow: "0 0 60px rgba(181,160,106,0.06)",
+                  minHeight: "300px",
+                }}
+              >
+                {/* Scanline Effect */}
+                <div
+                  className="absolute inset-0 pointer-events-none rounded-xl"
+                  style={{
+                    background:
+                      "repeating-linear-gradient(0deg, rgba(255,255,255,0.015) 0px, transparent 2px, transparent 4px)",
+                  }}
+                />
+
+                {/* Terminal Header */}
+                <div className="flex items-center gap-2 mb-4 relative z-10">
+                  <div className="w-2 h-2 rounded-full bg-[#FF5F56]" />
+                  <div className="w-2 h-2 rounded-full bg-[#FFBD2E]" />
+                  <div className="w-2 h-2 rounded-full bg-[#27C93F]" />
+                  <span className="font-mono text-xs text-[var(--color-gold)] ml-2">
+                    ahad@portfolio:~$
+                  </span>
+                </div>
+
+                {/* Terminal Content */}
+                <div
+                  className="font-mono relative z-10"
+                  style={{ fontSize: "13px" }}
+                >
+                  <motion.div
+                    initial={{ opacity: 0, y: 4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 }}
+                    className="text-[var(--color-text-tertiary)] mb-1"
+                  >
+                    $ whoami
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.7 }}
+                    className="text-[var(--color-gold)] mb-3"
+                  >
+                    → ahad_ahamed_akash
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.0 }}
+                    className="text-[var(--color-text-tertiary)] mb-1"
+                  >
+                    $ skills --list
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.3 }}
+                    className="text-[var(--color-copper)] mb-3"
+                  >
+                    → react, next.js, node.js, mongodb
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.6 }}
+                    className="text-[var(--color-text-tertiary)] mb-1"
+                  >
+                    $ solve --platform codeforces
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.9 }}
+                    className="text-[var(--color-sage)] mb-3"
+                  >
+                    → 110+ problems solved ✓
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 2.2 }}
+                    className="text-[var(--color-text-tertiary)] mb-1"
+                  >
+                    $ status
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 2.5 }}
+                    className="text-[var(--color-sage)] mb-2"
+                  >
+                    → open_to_work: true
+                  </motion.div>
+
+                  {/* Ready Line */}
+                  {showReadyLine && (
+                    <>
+                      <motion.div
+                        initial={{ opacity: 0, y: 4 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2 }}
+                        className="text-[var(--color-gold)] mb-1"
+                        style={{ color: "#B5A06A" }}
+                      >
+                        → ready_to_build --your-next-product
+                      </motion.div>
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.4 }}
+                        className="text-[var(--color-gold)] animate-pulse"
+                        style={{ color: "#B5A06A" }}
+                      >
+                        ▊
+                      </motion.div>
+                    </>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* STATS STRIP - Full Width Below Columns */}
+        <div
+          style={{
+            paddingTop: "40px",
+            paddingBottom: "40px",
+            // borderTop: "1px solid rgba(255,255,255,0.08)",
+          }}
+        >
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+            {stats.map((stat, index) => (
+              <div key={index} className="flex flex-col">
+                <span
+                  className="font-display text-[var(--color-gold)]"
+                  style={{ fontSize: "clamp(32px, 4vw, 42px)" }}
+                >
+                  {stat.value}
+                </span>
+                <span
+                  className="font-mono uppercase tracking-wider text-[var(--color-text-tertiary)]"
+                  style={{ fontSize: "11px" }}
+                >
+                  {stat.label}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

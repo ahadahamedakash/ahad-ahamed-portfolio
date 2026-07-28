@@ -77,7 +77,7 @@ export default function TheArc() {
               style={{ borderColor: card.borderColor }}
             >
               <div className="mb-4">
-                <span className="font-display text-5xl md:text-6xl text-[var(--color-text-primary)]">
+                <span className="font-display text-5xl md:text-5xl text-[var(--color-text-primary)]">
                   {card.year}
                 </span>
               </div>

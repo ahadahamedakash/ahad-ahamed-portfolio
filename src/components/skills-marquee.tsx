@@ -4,15 +4,39 @@
 import { skills } from "@/lib/data";
 import { motion } from "framer-motion";
 
+const filteredSkills = skills.filter(
+  (skill) => skill.category !== "Problem Solving",
+);
 
-const firstLineSkills = skills.slice(0, Math.ceil(skills.length / 2));
-const secondLineSkills = skills.slice(Math.ceil(skills.length / 2));
+const firstLineSkills = filteredSkills.slice(
+  0,
+  Math.ceil(filteredSkills.length / 2),
+);
+
+const secondLineSkills = filteredSkills.slice(
+  Math.ceil(filteredSkills.length / 2),
+);
 
 interface MarqueeLineProps {
   skills: typeof skills;
   direction: "left" | "right";
   speed?: number;
 }
+
+const accentColors = {
+  gold: "var(--color-gold)",
+  copper: "var(--color-copper)",
+  sage: "var(--color-sage)",
+};
+
+const darkLogos = [
+  "GitHub",
+  "Vercel",
+  "Next.js",
+  "Express.js",
+  "JWT",
+  "shadcn/ui",
+];
 
 function MarqueeLine({ skills, direction, speed = 50 }: MarqueeLineProps) {
   return (
@@ -38,7 +62,15 @@ function MarqueeLine({ skills, direction, speed = 50 }: MarqueeLineProps) {
             whileHover={{ scale: 1.1 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
-            <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mb-2 sm:mb-3 p-2 sm:p-3 rounded-xl bg-background border border-border shadow-sm group-hover:shadow-lg group-hover:border-primary/50 transition-all duration-300">
+            <div
+              className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mb-2 sm:mb-3 p-2 sm:p-3 rounded-xl bg-background border shadow-sm group-hover:shadow-lg group-hover:border-primary/50 transition-all duration-300"
+              style={{
+                borderColor: accentColors.sage,
+                backgroundColor: darkLogos.includes(skill.name)
+                  ? `color-mix(in srgb, ${accentColors.gold} 50%, transparent)`
+                  : undefined,
+              }}
+            >
               <img
                 src={skill.logo}
                 alt={skill.name}
