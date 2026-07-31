@@ -80,7 +80,7 @@ function MarqueeLine({ skills, direction, speed = 50 }: MarqueeLineProps) {
                 }}
               />
             </div>
-            <span className="text-xs sm:text-sm font-medium text-muted-foreground dark:text-white group-hover:text-foreground transition-colors duration-300">
+            <span className="hidden lg:inline text-xs sm:text-sm font-medium text-muted-foreground dark:text-white group-hover:text-foreground transition-colors duration-30">
               {skill.name}
             </span>
           </motion.div>

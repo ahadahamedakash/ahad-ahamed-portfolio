@@ -6,9 +6,9 @@ import CountUp from "@/components/ui/CountUp";
 const stats = [
   {
     platform: "Codeforces",
-    value: 110,
+    value: 350,
     suffix: "+",
-    detail: "3 contests entered",
+    detail: "10+ contests entered",
     accentColor: "var(--color-gold)",
   },
   {
@@ -20,14 +20,14 @@ const stats = [
   },
   {
     platform: "CodeChef",
-    value: 2,
-    suffix: "",
+    value: 14,
+    suffix: "+",
     detail: "contests entered",
     accentColor: "var(--color-sage)",
   },
   {
     platform: "Total",
-    value: 160,
+    value: 400,
     suffix: "+",
     detail: "problems solved",
     accentColor: "var(--color-amber-deep)",
