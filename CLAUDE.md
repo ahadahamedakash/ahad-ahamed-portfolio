@@ -159,10 +159,10 @@ Layout: intro text left, stats cards right (or full-width stat grid).
 
 Stats (count-up animation on viewport entry):
 
-- Codeforces: 110+ problems, 3 contests
+- Codeforces: 400+ problems, 10+ contests
 - LeetCode: 50+ problems
-- CodeChef: 2 contests
-- Total: 160+ problems solved
+- CodeChef: 14+ contests
+- Total: 400+ problems solved
 
 Below stats: activity heatmap grid (like GitHub contributions).
 Use `react-activity-calendar` library or build a custom SVG grid.

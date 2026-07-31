@@ -25,7 +25,7 @@ export const steps = [
     label: "measure",
     title: "Track what matters",
     description:
-      "160+ problems solved. 35% bundle reduction. 10+ projects on time. I don't guess — I measure. Discipline makes the difference.",
+      "400+ problems solved. 35% bundle reduction. 10+ projects on time. I don't guess — I measure. Discipline makes the difference.",
     accent: "#6B8C6B",
   },
   {

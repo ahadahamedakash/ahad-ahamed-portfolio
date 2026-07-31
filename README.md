@@ -29,6 +29,7 @@ Open [http://localhost:3000](http://localhost:3000) to view the portfolio.
 ## ✨ Key Features
 
 ### **User Experience**
+
 - **Smart Preloader** — First-impression branding experience that shows only once (localStorage-based)
 - **Smooth Page Transitions** — Optimized loading states with skeleton screens
 - **Responsive Design** — Flawless experience across all devices (mobile, tablet, desktop)
@@ -36,6 +37,7 @@ Open [http://localhost:3000](http://localhost:3000) to view the portfolio.
 - **Theme Support** — Dark mode (default) with light mode capability
 
 ### **Performance Optimizations**
+
 - **Image Optimization** — Next.js Image component with lazy loading and priority hints
 - **Font Optimization** — Self-hosted Google Fonts with `display: swap` strategy
 - **Code Splitting** — Automatic route-based code splitting
@@ -43,6 +45,7 @@ Open [http://localhost:3000](http://localhost:3000) to view the portfolio.
 - **Bundle Size** — Minimal dependencies, tree-shaking enabled
 
 ### **Developer Experience**
+
 - **TypeScript** — Full type safety across the codebase
 - **ESLint & Prettier** — Code quality and formatting standards
 - **Git Hooks** — Pre-commit hooks for code quality
@@ -54,27 +57,32 @@ Open [http://localhost:3000](http://localhost:3000) to view the portfolio.
 ## 🛠 Tech Stack
 
 ### **Frontend Framework**
+
 - **Next.js 16** — React framework with App Router, Server Components, Turbopack
 - **React 19** — UI library with latest features
 - **TypeScript 5** — Type-safe development
 
 ### **Styling & Animation**
+
 - **Tailwind CSS** — Utility-first CSS framework
 - **Framer Motion** — Production-ready motion library for React
 - **CSS Custom Properties** — Design tokens for theming
 - **Google Fonts** — Playfair Display, DM Sans, JetBrains Mono
 
 ### **UI Components**
+
 - **Lucide React** — Beautiful icon library
 - **ShadCN UI** — High-quality component primitives (customized)
 - **Custom Components** — Purpose-built for this design system
 
 ### **Performance & Analytics**
+
 - **Vercel Analytics** — User analytics
 - **Vercel Speed Insights** — Core Web Vitals monitoring
 - **Next/Image** — Optimized image loading
 
 ### **Development Tools**
+
 - **ESLint** — Linting
 - **Prettier** — Code formatting
 - **Husky** — Git hooks
@@ -137,20 +145,17 @@ A custom design system built around warm, handcrafted aesthetics:
 
 ```css
 /* Core Colors */
---color-bg-primary: #111110      /* Main background */
---color-bg-secondary: #0e0e0d    /* Section alternates */
---color-bg-surface: #1a1a18      /* Cards, surfaces */
---color-gold: #b5a06a            /* Primary accent */
---color-copper: #c8845a          /* Secondary accent */
---color-sage: #6b8c6b            /* Growth, success */
-
-/* Typography */
---font-display: Playfair Display  /* Headings */
---font-sans: DM Sans              /* Body text */
---font-mono: JetBrains Mono        /* Code, terminal */
+--color-bg-primary: #111110 /* Main background */ --color-bg-secondary: #0e0e0d
+  /* Section alternates */ --color-bg-surface: #1a1a18 /* Cards, surfaces */
+  --color-gold: #b5a06a /* Primary accent */ --color-copper: #c8845a
+  /* Secondary accent */ --color-sage: #6b8c6b /* Growth, success */
+  /* Typography */ --font-display: Playfair Display /* Headings */
+  --font-sans: DM Sans /* Body text */ --font-mono: JetBrains Mono
+  /* Code, terminal */;
 ```
 
 **Design Philosophy:**
+
 - Warm, ambitious, handcrafted aesthetic
 - Sharp and intentional design choices
 - Every animation has meaning
@@ -161,12 +166,14 @@ A custom design system built around warm, handcrafted aesthetics:
 ## 🎯 Key Achievements Demonstrated
 
 ### **Engineering Excellence**
+
 - ✅ **40% reduction in development time** at AB Software Solutions through reusable patterns
 - ✅ **35% bundle size reduction** in production projects
 - ✅ **10+ projects delivered** on time
-- ✅ **160+ algorithmic problems solved** (Codeforces, LeetCode, CodeChef)
+- ✅ **400+ algorithmic problems solved** (Codeforces, LeetCode, CodeChef)
 
 ### **Technical Capabilities**
+
 - **Frontend**: React, Next.js, TypeScript, Tailwind CSS, Framer Motion
 - **Backend**: Node.js, Express.js, MongoDB, REST APIs
 - **State Management**: Redux Toolkit, Tanstack Query, Context API
@@ -174,6 +181,7 @@ A custom design system built around warm, handcrafted aesthetics:
 - **Tools**: Git, GitHub Actions, Vercel, Docker
 
 ### **Soft Skills**
+
 - **Remote Collaboration**: 1.5+ years working with international teams
 - **Problem Solving**: Competitive programming background
 - **Communication**: Clear documentation and technical writing
@@ -184,6 +192,7 @@ A custom design system built around warm, handcrafted aesthetics:
 ## 🎨 Highlight Features
 
 ### **1. Smart Preloader System**
+
 ```typescript
 // Shows only on first visit ever (localStorage-based)
 // Waits for fonts to load before revealing content
@@ -192,6 +201,7 @@ A custom design system built around warm, handcrafted aesthetics:
 ```
 
 ### **2. Competitive Programming Heatmap**
+
 ```typescript
 // Custom SVG grid showing activity intensity
 // Seeded random for consistency between server/client
@@ -200,6 +210,7 @@ A custom design system built around warm, handcrafted aesthetics:
 ```
 
 ### **3. Product Showcase Cards**
+
 ```typescript
 // Horizontal card layout with numbering
 // Quick action buttons: Live Demo, Frontend, Backend, Details
@@ -208,6 +219,7 @@ A custom design system built around warm, handcrafted aesthetics:
 ```
 
 ### **4. Experience Timeline**
+
 ```typescript
 // Animated vertical line drawing on scroll
 // Timeline dots with accent colors
@@ -216,6 +228,7 @@ A custom design system built around warm, handcrafted aesthetics:
 ```
 
 ### **5. Back-to-Top Button**
+
 ```typescript
 // Appears after scrolling past hero section (400px)
 // Spring animation with rotation on appear/disappear
@@ -229,12 +242,14 @@ A custom design system built around warm, handcrafted aesthetics:
 ## 📊 Performance Metrics
 
 Targeted Core Web Vitals:
+
 - **LCP** (Largest Contentful Paint): < 2.5s
 - **FID** (First Input Delay): < 100ms
 - **CLS** (Cumulative Layout Shift): < 0.1
 - **FCP** (First Contentful Paint): < 1.8s
 
 Optimization Strategies:
+
 - Image lazy loading & priority hints
 - Font self-hosting with preload
 - Route-based code splitting
@@ -246,6 +261,7 @@ Optimization Strategies:
 ## 🚦 Deployment
 
 ### **Vercel (Recommended)**
+
 ```bash
 # Install Vercel CLI
 npm i -g vercel
@@ -255,9 +271,11 @@ vercel
 ```
 
 ### **Environment Variables**
+
 No environment variables required for basic functionality.
 
 ### **Build Output**
+
 - Static HTML where possible (Server Components)
 - Client-side JavaScript for interactivity
 - Optimized asset bundling with Turbopack
@@ -276,7 +294,9 @@ No environment variables required for basic functionality.
 ## 🔧 Configuration
 
 ### **Fonts Setup**
+
 Fonts are loaded via `next/font/google` for optimal performance:
+
 ```typescript
 const playfairDisplay = Playfair_Display({
   variable: "--font-display",
@@ -287,7 +307,9 @@ const playfairDisplay = Playfair_Display({
 ```
 
 ### **Theme Configuration**
+
 Uses `next-themes` with dark mode default:
+
 ```typescript
 <ThemeProvider defaultTheme="dark" attribute="data-theme">
   {children}
@@ -299,12 +321,14 @@ Uses `next-themes` with dark mode default:
 ## 📝 Development Guidelines
 
 ### **Code Style**
+
 - Use TypeScript for all new files
 - Follow existing naming conventions (PascalCase for components, camelCase for utilities)
 - Write self-documenting code with clear variable names
 - Add comments for complex logic only
 
 ### **Component Structure**
+
 ```typescript
 // 1. Imports
 // 2. Types/Interfaces
@@ -314,6 +338,7 @@ Uses `next-themes` with dark mode default:
 ```
 
 ### **Animation Rules**
+
 - Use `whileInView` with `viewport={{ once: true }}` for scroll reveals
 - Keep animations lightweight (transforms, opacity)
 - No page transitions that delay navigation
@@ -324,6 +349,7 @@ Uses `next-themes` with dark mode default:
 ## 🤝 Contributing
 
 This is a personal portfolio, but suggestions are welcome! Feel free to:
+
 - Report bugs via GitHub Issues
 - Suggest new features
 - Improve documentation
@@ -356,4 +382,4 @@ This project is open source and available under the [MIT License](LICENSE).
 
 **Built with passion by Ahad Ahamed Akash 💛**
 
-*From medical student to full-stack engineer — building products, solving problems, one commit at a time.*
+_From medical student to full-stack engineer — building products, solving problems, one commit at a time._

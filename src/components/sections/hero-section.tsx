@@ -265,7 +265,7 @@ export default function HeroSection() {
                     transition={{ delay: 1.9 }}
                     className="text-[var(--color-sage)] mb-3"
                   >
-                    → 110+ problems solved ✓
+                    → 400+ problems solved ✓
                   </motion.div>
 
                   <motion.div
