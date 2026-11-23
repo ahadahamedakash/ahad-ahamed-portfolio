@@ -7,7 +7,7 @@ const cards = [
     year: "2018",
     label: "Medical Diploma",
     description:
-      "Most developers start with code. I started with anatomy. Graduated with a medical diploma — then decided to build a different kind of future.",
+      "Most engineers start with code. I started with anatomy. Graduated with a medical diploma — then decided to build a different kind of future.",
     borderColor: "var(--color-gold)",
   },
   {

@@ -18,7 +18,7 @@ export function StructuredData({ type = "Person", data }: StructuredDataProps) {
       "@type": "Person",
       name: "Ahad Ahamed Akash",
       url: baseUrl,
-      jobTitle: "Full-Stack Developer",
+      jobTitle: "Full-Stack Software Engineer",
       email: "ahadahamedakash@gmail.com",
       sameAs: [
         "https://github.com/ahadahamedakash",
@@ -34,14 +34,16 @@ export function StructuredData({ type = "Person", data }: StructuredDataProps) {
         "Full-Stack Development",
         "Competitive Programming",
       ],
-      description: "Full-Stack Developer from Bangladesh specializing in React, Next.js, and Node.js. Building real products and solving algorithmic problems.",
+      description:
+        "Full-Stack Software Engineer from Bangladesh specializing in React, Next.js, and Node.js. Building real products and solving algorithmic problems.",
     },
     WebSite: {
       "@context": "https://schema.org",
       "@type": "WebSite",
       name: "Ahad Ahamed Akash Portfolio",
       url: baseUrl,
-      description: "Portfolio of Ahad Ahamed Akash, a Full-Stack Developer from Bangladesh.",
+      description:
+        "Portfolio of Ahad Ahamed Akash, a Full-Stack Software Engineer from Bangladesh.",
       potentialAction: {
         "@type": "SearchAction",
         target: {
@@ -54,8 +56,9 @@ export function StructuredData({ type = "Person", data }: StructuredDataProps) {
     WebPage: {
       "@context": "https://schema.org",
       "@type": "WebPage",
-      name: "Ahad Ahamed Akash - Full-Stack Developer Portfolio",
-      description: "Portfolio showcasing projects, skills, and experience of Ahad Ahamed Akash",
+      name: "Ahad Ahamed Akash - Full-Stack Software Engineer's Portfolio",
+      description:
+        "Portfolio showcasing projects, skills, and experience of Ahad Ahamed Akash",
       url: baseUrl,
       inLanguage: "en-US",
       isPartOf: {

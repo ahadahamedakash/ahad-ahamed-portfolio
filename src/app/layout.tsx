@@ -34,16 +34,20 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ahadahamedakash.com"),
-  title: "Ahad Ahamed Akash — Full-Stack Developer & Problem Solver",
+  title: "Ahad Ahamed Akash - Full-Stack Software Engineer & Problem Solver",
   description:
-    "Full-Stack Developer from Bangladesh specializing in React, Next.js, and Node.js. Building real products and solving algorithmic problems on Codeforces and LeetCode.",
+    "Full-Stack Software Engineer from Bangladesh specializing in React, Next.js, and Node.js. Building real products and solving algorithmic problems on Codeforces and LeetCode.",
   keywords: [
+    "Ahad Ahamed Akash",
     "Full-Stack Developer",
+    "Full-Stack Software Engineer",
+    "Software Engineer",
+    "Frontend Developer",
+    "Backend Developer",
     "React Developer",
     "Next.js",
-    "Bangladesh Developer",
     "Competitive Programmer",
-    "Ahad Ahamed Akash",
+    "Problem Solver",
   ],
   authors: [{ name: "Ahad Ahamed Akash" }],
   creator: "Ahad Ahamed Akash",
@@ -63,13 +67,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://ahadahamedakash.com",
-    title: "Ahad Ahamed Akash — Full-Stack Developer & Problem Solver",
-    description: "Full-Stack Developer from Bangladesh. Building real products, solving hard problems.",
+    title: "Ahad Ahamed Akash - Full-Stack Software Engineer & Problem Solver",
+    description:
+      "Full-Stack Software Engineer from Bangladesh. Building real products, solving hard problems.",
     siteName: "Ahad Ahamed Akash Portfolio",
     images: [
       {
-        url: "/og-image.png",
-        width: 1200,
+        url: "/images/ahad/ahad.webp",
+        width: 630,
         height: 630,
         alt: "Ahad Ahamed Akash - Portfolio",
       },
@@ -77,11 +82,11 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ahad Ahamed Akash — Full-Stack Developer",
+    title: "Ahad Ahamed Akash - Full-Stack Software Engineer",
     description:
-      "Full-Stack Developer from Bangladesh. React, Next.js, Node.js, Competitive Programming.",
-    creator: "@ahadahamed",
-    images: ["/twitter-image.png"],
+      "Full-Stack Software Engineer from Bangladesh. React, Next.js, Node.js, Competitive Programming.",
+    creator: "@ahadahamedakash",
+    images: ["/images/ahad/ahad.webp"],
   },
   robots: {
     index: true,
@@ -143,7 +148,11 @@ export default function RootLayout({
         <StructuredData type="WebPage" />
       </head>
       <body className="antialiased" suppressHydrationWarning>
-        <ThemeProvider defaultTheme="dark" enableSystem={false} attribute="data-theme">
+        <ThemeProvider
+          defaultTheme="dark"
+          enableSystem={false}
+          attribute="data-theme"
+        >
           <ScrollProgressBar />
           <Navbar />
           {children}

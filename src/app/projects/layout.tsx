@@ -6,12 +6,14 @@ import { Metadata } from "next";
  * Following Open Graph and Twitter Card standards
  */
 export const metadata: Metadata = {
-  title: "Projects — Ahad Ahamed Akash | Full-Stack Developer",
+  title: "Projects - Ahad Ahamed Akash | Full-Stack Software Engineer",
   description:
     "Explore full-stack products built by Ahad Ahamed Akash — e-commerce platforms like TechStore, stock management systems like Alishan, AI health assistants like MedAI, and more. Built with React, Next.js, Node.js, and modern technologies.",
   keywords: [
     "Ahad Ahamed Akash",
     "Full-Stack Developer",
+    "Full-Stack Software Engineer",
+    "Software Engineer",
     "React projects",
     "Next.js projects",
     "MERN stack",
@@ -24,15 +26,17 @@ export const metadata: Metadata = {
     "MedAI Assistant",
     "Bangladesh developer",
   ],
-  authors: [{ name: "Ahad Ahamed Akash", url: "https://github.com/ahadahamedakash" }],
+  authors: [
+    { name: "Ahad Ahamed Akash", url: "https://github.com/ahadahamedakash" },
+  ],
   creator: "Ahad Ahamed Akash",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "/projects",
-    title: "Projects — Ahad Ahamed Akash | Full-Stack Developer",
+    title: "Projects - Ahad Ahamed Akash | Full-Stack Software Engineer",
     description:
-      "Full-stack products built by Ahad Ahamed Akash — e-commerce platforms, stock management systems, AI health assistants, and more.",
+      "Full-stack products built by Ahad Ahamed Akash - ecommerce platforms, stock management systems, AI health assistants, and more.",
     siteName: "Ahad Ahamed Akash Portfolio",
     images: [
       {
@@ -45,9 +49,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Projects — Ahad Ahamed Akash | Full-Stack Developer",
+    title: "Projects - Ahad Ahamed Akash | Full-Stack Software Engineer",
     description:
-      "Explore full-stack products built with React, Next.js, Node.js, and modern technologies.",
+      "Explore full-stack products built with React, Next.js, Node.js, Nest.js, FastAPI and modern technologies.",
     creator: "@ah1033ad",
     images: ["/og-projects.jpg"],
   },
@@ -67,10 +71,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ProjectsLayout({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export default function ProjectsLayout({ children }: { children: ReactNode }) {
   return <>{children}</>;
 }

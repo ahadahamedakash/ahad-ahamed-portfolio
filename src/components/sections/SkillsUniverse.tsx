@@ -24,7 +24,9 @@ const orbitalRings: Array<{
     name: "Frontend Stack",
     radius: 180,
     speed: 80,
-    skills: skills.filter((s) => ["Frontend", "UI"].includes(s.category)).slice(4, 9),
+    skills: skills
+      .filter((s) => ["Frontend", "UI"].includes(s.category))
+      .slice(4, 9),
     size: "medium",
   },
   {
@@ -38,7 +40,9 @@ const orbitalRings: Array<{
     name: "Tools & Testing",
     radius: 300,
     speed: 120,
-    skills: skills.filter((s) => ["Tools", "Testing", "Auth"].includes(s.category)),
+    skills: skills.filter((s) =>
+      ["Tools", "Testing", "Auth"].includes(s.category),
+    ),
     size: "small",
   },
   {
@@ -70,7 +74,7 @@ const itemVariants = {
 };
 
 interface SkillNodeProps {
-  skill: typeof skills[0];
+  skill: (typeof skills)[0];
   angle: number;
   radius: number;
   size: "large" | "medium" | "small";
@@ -261,11 +265,14 @@ export default function SkillsUniverse() {
             variants={itemVariants}
           >
             <div className="text-center">
-              <div className="font-display text-lg" style={{ color: "var(--color-gold)" }}>
+              <div
+                className="font-display text-lg"
+                style={{ color: "var(--color-gold)" }}
+              >
                 Full Stack
               </div>
               <div className="font-mono text-[10px] text-[var(--color-text-tertiary)]">
-                Developer
+                Software Engineer
               </div>
             </div>
           </motion.div>
@@ -300,9 +307,23 @@ export default function SkillsUniverse() {
             style={{ overflow: "visible" }}
           >
             <defs>
-              <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="var(--color-gold)" stopOpacity="0.3" />
-                <stop offset="100%" stopColor="var(--color-copper)" stopOpacity="0.1" />
+              <linearGradient
+                id="lineGradient"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="100%"
+              >
+                <stop
+                  offset="0%"
+                  stopColor="var(--color-gold)"
+                  stopOpacity="0.3"
+                />
+                <stop
+                  offset="100%"
+                  stopColor="var(--color-copper)"
+                  stopOpacity="0.1"
+                />
               </linearGradient>
             </defs>
             {/* Subtle radial lines from center */}
@@ -317,7 +338,11 @@ export default function SkillsUniverse() {
                 strokeWidth="0.5"
                 opacity={0.3}
                 animate={{ opacity: [0.1, 0.3, 0.1] }}
-                transition={{ duration: 3, repeat: Infinity, delay: angle / 360 }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  delay: angle / 360,
+                }}
               />
             ))}
           </svg>
@@ -331,14 +356,20 @@ export default function SkillsUniverse() {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <motion.div variants={itemVariants} className="flex items-center gap-2">
+          <motion.div
+            variants={itemVariants}
+            className="flex items-center gap-2"
+          >
             <div
               className="w-3 h-3 rounded-full"
               style={{ background: "var(--color-gold)" }}
             />
             <span>Hover to pause</span>
           </motion.div>
-          <motion.div variants={itemVariants} className="flex items-center gap-2">
+          <motion.div
+            variants={itemVariants}
+            className="flex items-center gap-2"
+          >
             <div
               className="w-3 h-3 rounded-full border border-[var(--color-gold)]"
               style={{ borderColor: "rgba(181, 160, 106, 0.3)" }}

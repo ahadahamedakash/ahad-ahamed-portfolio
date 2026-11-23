@@ -60,10 +60,10 @@ export interface ContactInfo {
 // Personal Information
 export const personalInfo = {
   name: "Ahad Ahamed Akash",
-  title: "Full Stack Developer | React & Next.js",
+  title: "Full Stack Software Engineer | React & Next.js",
   subtitle:
     "Love to building clean, fast & thoughtful web apps with modern web technologies",
-  bio: "I'm a frontend-focused developer with a knack for crafting responsive and smooth user experiences using React, Next.js, and Tailwind CSS. Over the past 1.5+ years, I’ve worked on a variety of projects — from full-stack MERN applications to modern dashboards with ShadCN and MUI — always putting performance, accessibility, and clean design at the heart of my work. I enjoy turning ideas into real, usable interfaces and constantly push myself to learn and grow with every project.",
+  bio: "I'm a Full-Stack Software Engineer with a knack for crafting responsive and smooth user experiences using React, Next.js, and Tailwind CSS. Over the past 1.5+ years, I’ve worked on a variety of projects — from full-stack MERN applications to modern dashboards with ShadCN and MUI — always putting performance, accessibility, and clean design at the heart of my work. I enjoy turning ideas into real, usable interfaces and constantly push myself to learn and grow with every project.",
   resumeUrl: "/Resume-of-Ahad-Ahamed-Akash.pdf",
 };
 
