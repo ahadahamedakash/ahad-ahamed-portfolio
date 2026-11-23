@@ -6,7 +6,7 @@ import CountUp from "@/components/ui/CountUp";
 const stats = [
   {
     platform: "Codeforces",
-    value: 350,
+    value: 450,
     suffix: "+",
     detail: "10+ contests entered",
     accentColor: "var(--color-gold)",
@@ -20,14 +20,14 @@ const stats = [
   },
   {
     platform: "CodeChef",
-    value: 14,
+    value: 30,
     suffix: "+",
     detail: "contests entered",
     accentColor: "var(--color-sage)",
   },
   {
     platform: "Total",
-    value: 400,
+    value: 500,
     suffix: "+",
     detail: "problems solved",
     accentColor: "var(--color-amber-deep)",
